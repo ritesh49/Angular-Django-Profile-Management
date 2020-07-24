@@ -1,0 +1,14 @@
+body{
+    margin-top:20px;
+    background:#f8f8f8
+}
+
+.form-control {
+    background-color: #f3f0ed;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

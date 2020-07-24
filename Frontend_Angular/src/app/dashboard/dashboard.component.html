@@ -1,0 +1,105 @@
+<div style="background: -webkit-linear-gradient(bottom, #c7a2a2 0%, #2d3168 100%) fixed;font-family: 'Poppins', sans-serif;">
+<div class="container">
+<div class="row flex-lg-nowrap">
+  <div class="col">
+    <div class="row">
+      <div style="margin-top: 60px;" class="col mb-3">
+        <div style="background-color: rgba(251, 253, 138,0.6)" class="card">
+          <div class="card-body">
+            <div class="e-profile">
+              <div class="row">
+                <div class="col-12 col-sm-auto mb-3">
+                  <div class="mx-auto" style="width: 140px;">
+                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                      <!-- <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span> -->
+                      <img width="140" id="profile_image" *ngIf="user_image" height="140" [src]="user_image"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                  <div class="text-center text-sm-left mb-2 mb-sm-0">
+                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{regObj.full_name}}</h4>
+                    <div class="mt-2">
+                      <label style="background-color: #3f528e;" class="btn btn-primary" type="button">
+                        <i class="fa fa-fw fa-camera"></i>
+                        Change Photo
+                        <input (change)="getImage($event)" accept="image/*" style="display: none;"
+                        type="file">
+                      </label>
+                    </div>
+                  </div>                  
+                </div>
+              </div>              
+              <div class="tab-content pt-3">
+                <div class="tab-pane active">
+                  <form class="form" novalidate="">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Full Name</label>
+                              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.full_name" id="full_name" (change)="value_changed('full_name')" class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Date of Birth</label>
+                              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.dob" id="dob" (change)="value_changed('dob')" class="form-control" type="date" name="Date of Birth" placeholder="DOB" value="2020-40-12">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.email_id" id="email_id" (change)="value_changed('email_id')" class="form-control" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Passport Number</label>
+                              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.passport_num" id="passport_num" (change)="value_changed('passport_num')" class="form-control" type="number" name="name">
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Phone No.</label>
+                              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.phone_no" id="phone_no" (change)="value_changed('phone_no')" class="form-control" type="number" name="Phone No." placeholder="Phone No.">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>                    
+                    <div class="row">
+                      <div class="col d-flex justify-content-end">
+                        <button *ngIf="is_changed" style="background-color: #3f528e;" (click)="update_changes()" class="btn btn-primary" type="submit">Save Changes</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 60px;" class="col-12 col-md-3 mb-3">
+        <div style="background-color: rgba(251, 253, 138,0.6)" class="card mb-3">
+          <div class="card-body">
+            <div class="px-xl-3">
+              <button (click)="user_logout()" style="background-color: #3f528e;" class="btn btn-block btn-secondary">
+                <i class="fa fa-sign-out"></i>
+                <span >Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div><br/><br/><br/><br/><br>
+</div>
+</div>

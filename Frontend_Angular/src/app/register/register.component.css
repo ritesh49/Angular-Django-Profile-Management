@@ -1,0 +1,40 @@
+body {
+    background: -webkit-linear-gradient(bottom, #c7a2a2 0%, #2d3168 100%);
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.buttonLogin {
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+*[role="form"] {
+   max-width: 530px;
+   padding: 15px;
+   margin: 0 auto;
+   border-radius: 0.3em;
+   background-color: rgba(242, 242, 242,0.8);
+}
+
+*[role="form"] h2 { 
+   font-family: 'Open Sans' , sans-serif;
+   font-size: 40px;
+   font-weight: 600;
+   color: #000000;
+   margin-top: 5%;
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
+
