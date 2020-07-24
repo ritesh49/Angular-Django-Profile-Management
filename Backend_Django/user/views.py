@@ -64,7 +64,8 @@ class UserView(APIView):
                 return Response(serialized_data.data,status=status.HTTP_201_CREATED)                
             return Response(serialized_data.errors,status=status.HTTP_409_CONFLICT)
     
-    @authentication_classes([BasicAuthentication,SessionAuthentication])    
+    @authentication_classes([BasicAuthentication,SessionAuthentication])
+    @permission_classes([IsAuthenticated])
     def get(self,request,id):
         ''' Getting the User Data'''
         user_data = RegisterModel.objects.filter(id = id)
@@ -72,6 +73,7 @@ class UserView(APIView):
         return Response(serialized_data.data[0])
 
     @authentication_classes([BasicAuthentication,SessionAuthentication])
+    @permission_classes([IsAuthenticated])
     def post(self,request):
         ''' Updating User data from Dashboard '''
         strip_spaces_from_data(request.data)
@@ -98,6 +100,8 @@ class FileView(APIView):
         else:
             return Response({'error': 'No File Attached'}, status=status.HTTP_204_NO_CONTENT)
 
+    @authentication_classes([BasicAuthentication,SessionAuthentication])
+    @permission_classes([IsAuthenticated])
     def get(self, request, id):
         ''' For downloading image according to RegUserId '''
         data = RegisterModel.objects.get(pk=id)

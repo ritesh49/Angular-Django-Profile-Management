@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'c7%rc6cavo3cq3v0(@9-8lyp+^qdrul84ze613q77)y6*a*_z5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -91,7 +91,13 @@ WSGI_APPLICATION = 'user_management.wsgi.application'
 DATABASES = {
 "default": {
     "ENGINE": "djongo",
-    '''MONGO_DB_URI'''
+    "CLIENT": {
+        "host": "mongodb+srv://angularTest:blood-connect-major@cluster0-vizlu.gcp.mongodb.net/?retryWrites=true&w=majority",
+        "username": "angularTest",
+        "password": urllib.parse.quote_plus("blood-connect-major"),
+        "name": "angularTest",
+        "authMechanism": "SCRAM-SHA-1"        
+        },
     "ENFORCE_SCHEMA":False
     }
 }
