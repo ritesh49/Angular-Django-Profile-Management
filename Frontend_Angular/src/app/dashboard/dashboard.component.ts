@@ -70,6 +70,7 @@ export class DashboardComponent implements OnInit {
 
   update_changes() {
     if(this.selectedFile) this.uploadImage()
+    delete this.regObj.profile_image;
     this.common.update_values(this.regObj)
     .subscribe(data => this.toaster.showSuccess(data['success']),
     err => this.toaster.showError('Error Occured Contact Support'),

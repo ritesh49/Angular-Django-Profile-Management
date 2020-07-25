@@ -82,7 +82,7 @@ class UserView(APIView):
         try :
             del data['id']
             num = RegisterModel.objects.filter(id=user_id).update(**data)
-            return Response({'success':'Data Succesfully Updated'},status=status.HTTP_205_RESET_CONTENT)
+            return Response({'success':'Data Succesfully Updated'},status=status.HTTP_202_ACCEPTED)
         except:
             return Response({'error':'Error Occured Contact Support'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
     
