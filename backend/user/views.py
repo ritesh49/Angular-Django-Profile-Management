@@ -81,8 +81,10 @@ class UserView(APIView):
         user_id = data['id']
         try :
             del data['id']
-            num = RegisterModel.objects.filter(id=user_id).update(**data)
-            return Response({'success':'Data Succesfully Updated'},status=status.HTTP_202_ACCEPTED)
+            RegisterModel.objects.filter(id=user_id).update(**data)
+            reg_data = RegisterModel.objects.filter(id = user_id)
+            serialized_data = RegisterSerializer(reg_data,many=True)
+            return Response(serialized_data.data[0],status=status.HTTP_200_OK)
         except:
             return Response({'error':'Error Occured Contact Support'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
     
