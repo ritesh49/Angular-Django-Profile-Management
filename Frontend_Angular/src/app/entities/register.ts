@@ -4,6 +4,6 @@ export class RegisterInfo {
     dob:string;
     phone_no:Number;
     email_id:string;
-    passport_num:Number;
+    passport_num:string;
     profile_image:File;
 }

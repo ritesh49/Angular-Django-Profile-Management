@@ -15,12 +15,14 @@ from django.conf import settings
 
 def index(request):
     ''' For rendering the angular Compiled Code'''
+
     return render(request,'index.html')
 
 @api_view(['GET'])
 def authenticate_user(request,phone_no):    
     ''' Creating Sessions and Authenticating user
     If the user exists with that Phone No. in Database '''
+
     username= phone_no
     password = phone_no
     try :
@@ -36,13 +38,13 @@ def authenticate_user(request,phone_no):
 
 @api_view(['GET'])
 def logout_user(request):
-    if request.user.is_authenticated:
-        logout(request) # authomatically flushes the Session from the model
-        return Response({'success':'User successfully logged out'})
-    return Response({'error':'User Not Authenticated'},status=401)
+    ''' Removes Session of authenticated user'''
+    logout(request) # authomatically flushes the Session from the model
+    return Response({'success':'User successfully logged out'})
 
 def strip_spaces_from_data(obj):
     ''' For Stripping Spaces from the request body'''
+
     for i in obj:
         if type(obj[i]) == str:
             obj[i] = obj[i].strip()
@@ -51,6 +53,7 @@ class UserView(APIView):
     def put(self,request):
         ''' Registering a new user ,
          and checking if the user with that Phone No. already exists'''
+
         strip_spaces_from_data(request.data)
         data = request.data
         serialized_data = RegisterSerializer(data = request.data)
@@ -68,6 +71,7 @@ class UserView(APIView):
     @permission_classes([IsAuthenticated])
     def get(self,request,id):
         ''' Getting the User Data'''
+
         user_data = RegisterModel.objects.filter(id = id)
         serialized_data = RegisterSerializer(user_data,many=True)
         return Response(serialized_data.data[0])
@@ -76,6 +80,7 @@ class UserView(APIView):
     @permission_classes([IsAuthenticated])
     def post(self,request):
         ''' Updating User data from Dashboard '''
+
         strip_spaces_from_data(request.data)
         data = request.data
         user_id = data['id']
@@ -93,7 +98,8 @@ class FileView(APIView):
     @authentication_classes([BasicAuthentication,SessionAuthentication])
     @permission_classes([IsAuthenticated])
     def post(self, request, id):
-        ''' For uploading Files according to RegUserId '''
+        ''' For uploading Files according to Register Model Id '''
+
         if request.FILES:
             data = RegisterModel.objects.get(id=id)
             data.profile_image = request.FILES.get('file')
@@ -105,7 +111,9 @@ class FileView(APIView):
     @authentication_classes([BasicAuthentication,SessionAuthentication])
     @permission_classes([IsAuthenticated])
     def get(self, request, id):
-        ''' For downloading image according to RegUserId '''
+        ''' For downloading image according to Register Model Id
+        Deffered For now as some production error was coming '''
+
         data = RegisterModel.objects.get(pk=id)
         image_url = str(data.profile_image)
         image_path = settings.MEDIA_ROOT + '\\' + image_url.replace('/', '\\')        

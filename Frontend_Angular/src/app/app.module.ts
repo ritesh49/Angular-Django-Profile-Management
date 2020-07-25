@@ -14,6 +14,7 @@ import { LoaderInterceptorService } from './services/loader-interceptor.service'
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+// Configuration for Angular Notifications
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {

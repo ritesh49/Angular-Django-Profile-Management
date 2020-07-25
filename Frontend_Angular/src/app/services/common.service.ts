@@ -11,6 +11,7 @@ export class CommonService {
 
   constructor(private http:HttpClient) { }
   private djangoUrl = 'http://localhost:8000/';
+  // private djangoUrl = 'http://18.206.208.159/' // Used for Production
   private login_url = 'api/login/';
   private register_url = 'api/register';
   private upload_url = 'api/upload/';
@@ -29,7 +30,7 @@ export class CommonService {
       return this.http.put<RegisterInfo>(this.djangoUrl+this.register_url,regObj)
   }
 
-  update_values(regObj:RegisterInfo) {
+  update_values(regObj:RegisterInfo):Observable<RegisterInfo> {
       let httpHeaders = {
           headers:new HttpHeaders({
             'X-CSRFToken': document.cookie ? document.cookie
@@ -38,7 +39,7 @@ export class CommonService {
             .split('=')[1] : 'undefined'
           })
       }
-      return this.http.post(this.djangoUrl+this.register_url,regObj,httpHeaders)
+      return this.http.post<RegisterInfo>(this.djangoUrl+this.register_url,regObj,httpHeaders)
   }
 
   uploadImage(image:FormData,id:number) {

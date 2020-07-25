@@ -9,6 +9,7 @@ import { NotifierQueueService } from 'angular-notifier/lib/services/notifier-que
 })
 
 export class ToasterComponent extends NotifierService {
+  // Override the Notifier Service for using the Anaulgar Notifications
 
      showError(msg: string) {
        this.notify('error', msg);

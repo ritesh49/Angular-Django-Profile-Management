@@ -1,3 +1,6 @@
+'''
+Routes for handling REST API requests
+'''
 from django.urls import path
 from .views import authenticate_user,UserView,logout_user,FileView
 
