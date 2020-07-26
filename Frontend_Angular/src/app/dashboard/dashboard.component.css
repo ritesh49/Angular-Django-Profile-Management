@@ -1,10 +1,10 @@
-body{
-    margin-top:20px;
-    background:#f8f8f8
+body {
+  margin-top: 20px;
+  background: #f8f8f8;
 }
 
 .form-control {
-    background-color: #f3f0ed;
+  background-color: #f3f0ed;
 }
 
 input::-webkit-outer-spin-button,

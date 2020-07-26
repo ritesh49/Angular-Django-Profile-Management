@@ -1,44 +1,53 @@
 <body>
     <div class="container">
         <form class="form-horizontal" role="form">
-            <h2>Registration</h2><span class="buttonLogin" data-toggle="modal" data-target="#myModal">Already an account? Login</span><br/>
+            <h2>Registration</h2><span class="buttonLogin" data-toggle="modal" data-target="#myModal">Already an
+                account? Login</span><br />
             <div style="display:block;justify-content: center;" class="col-sm-5 control-label">
-                <img style="border: 5px solid #756152;margin: auto;" width="200" height="200"
-                    *ngIf="profile_img" id="profile_image" [src]="profile_img">
-                <label style="margin-top: -60px;margin-left: 15px;background: rgb(146 138 187 / 70%);" class="btn btn--pill btn--green">Change Profile Pic
-                    <input (change)="getImage($event)" accept="image/*" style="display: none;"
-                        type="file">
+                <img style="border: 5px solid #756152;margin: auto;" width="200" height="200" *ngIf="profile_img"
+                    id="profile_image" [src]="profile_img">
+                <label style="margin-top: -60px;margin-left: 15px;background: rgb(146 138 187 / 70%);"
+                    class="btn btn--pill btn--green">Change Profile Pic
+                    <input (change)="getImage($event)" accept="image/*" style="display: none;" type="file">
                 </label>
             </div>
             <div class="form-group">
                 <label for="fullName" class="col-sm-5 control-label">Full Name*</label>
                 <div class="col-sm-9">
-                    <input (click)="remove_background('full_name')" [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.full_name" type="text" id="full_name" placeholder="Full Name" class="form-control" autofocus>
+                    <input (click)="remove_background('full_name')" [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="regObj.full_name" type="text" id="full_name" placeholder="Full Name"
+                        class="form-control" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="birthDate" class="col-sm-5 control-label">Date of Birth*</label>
                 <div class="col-sm-9">
-                    <input (click)="remove_background('dob')" [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.dob" type="date" id="dob" class="form-control">
+                    <input (click)="remove_background('dob')" [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="regObj.dob" type="date" id="dob" class="form-control">
                 </div>
             </div>
             <div class="form-group">
                 <label for="phoneNumber" class="col-sm-5 control-label">Phone number* </label>
                 <div class="col-sm-9">
-                    <input (click)="remove_background('phone_no')" [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.phone_no" type="number" id="phone_no" placeholder="Phone number" class="form-control">
+                    <input (click)="remove_background('phone_no')" [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="regObj.phone_no" type="number" id="phone_no" placeholder="Phone number"
+                        class="form-control">
                     <span class="help-block">Phone no. will be used as your login credential</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-5 control-label">Email* </label>
                 <div class="col-sm-9">
-                    <input (click)="remove_background('email_id')" [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.email_id" type="email" id="email_id" placeholder="Email" class="form-control" name="email">
+                    <input (click)="remove_background('email_id')" [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="regObj.email_id" type="email" id="email_id" placeholder="Email"
+                        class="form-control" name="email">
                 </div>
             </div>
             <div class="form-group">
                 <label for="passportNum" class="col-sm-5 control-label">Passport Number* </label>
                 <div class="col-sm-9">
-                    <input (click)="remove_background('passport_num')" [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.passport_num" type="text" id="passport_num" placeholder="Passport Number"
+                    <input (click)="remove_background('passport_num')" [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="regObj.passport_num" type="text" id="passport_num" placeholder="Passport Number"
                         class="form-control">
                 </div>
             </div>
@@ -50,23 +59,26 @@
             <button (click)="register_user()" type="submit" class="btn btn-primary btn-block">Register</button>
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
-              
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                    <h4 style="margin-top: 15px; margin-left: 200px;" class="modal-title">LOGIN</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>                      
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 style="margin-top: 15px; margin-left: 200px;" class="modal-title">LOGIN</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <input (click)="remove_background('modal_phone_no')" id="modal_phone_no"
+                                [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.phone_no" type="number"
+                                min="0" placeholder="Enter Phone No."><br>
+                            <span class="help-block">Phone no. will be used as your login credential</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button (click)="login_user()" type="button" class="btn btn-default"
+                                data-dismiss="modal">Login</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                      <input (click)="remove_background('modal_phone_no')" id="modal_phone_no" [ngModelOptions]="{standalone: true}" [(ngModel)]="regObj.phone_no" type="number" min="0" placeholder="Enter Phone No."><br>
-                      <span class="help-block">Phone no. will be used as your login credential</span>
-                    </div>
-                    <div class="modal-footer">
-                      <button (click)="login_user()" type="button" class="btn btn-default" data-dismiss="modal">Login</button>
-                    </div>
-                  </div>              
                 </div>
-              </div>
+            </div>
         </form>
-    </div>        
+    </div>
 </body>
